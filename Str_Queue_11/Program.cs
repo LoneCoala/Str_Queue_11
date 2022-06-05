@@ -8,7 +8,7 @@ namespace Str_Queue_11
     {
         static void Main(string[] args)
         {
-            string text = "A+(45(s)-(f(X))*(B-C))"; // текст
+            string text = "A+(45s-f(X)*(B-C))"; // текст
             Stack<int> position = new Stack<int> { }; // левая скобка
             Stack<int> result = new Stack<int> { }; // все скобки
             int lengthOfMass = 0;
@@ -53,10 +53,13 @@ namespace Str_Queue_11
                     }
                 }
             }
+
             for (int i = 0; i < lengthOfMass; i++) // сортировка массива
             {
                 for (int j = 1; j >= 0; j --)
-                Console.Write(mass[i,j] + " ");
+                {
+                    Console.Write(mass[i, j] + " ");
+                }
             }
         }
     }
