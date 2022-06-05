@@ -8,7 +8,7 @@ namespace Str_Queue_11
     {
         static void Main(string[] args)
         {
-            string text = "A+(45-f(X)*(B-C))"; // текст
+            string text = "A+(45(s)-(f(X))*(B-C))"; // текст
             Stack<int> position = new Stack<int> { }; // левая скобка
             Stack<int> result = new Stack<int> { }; // все скобки
             int lengthOfMass = 0;
@@ -33,24 +33,30 @@ namespace Str_Queue_11
                     mass[i, j] = result.Pop();
                 }
             }
-            for (int i = 1; i < lengthOfMass; i++) // упорядочивание по возрастанию
+
+            
+
+            for (int i = 0; i < lengthOfMass; i++) // сортировка массива
             {
-                if (mass[i,1] < mass[i-1,1] )
+                for (int j = 0; j < lengthOfMass - 1; j++)
                 {
-                    int swap1 = mass[i,1];
-                    int swap2 = mass[i, 0];
-                    mass[i, 1] = mass[i - 1, 1];
-                    mass[i, 0] = mass[i - 1, 0];
-                    mass[i - 1, 1] = swap1;
-                    mass[i - 1, 0] = swap2;
+                    if (mass[j,1] > mass[j+1,1])
+                    {
+                        int swap1;
+                        int swap2;
+                        swap1 = mass[j, 1];
+                        swap2 = mass[j, 0];
+                        mass[j, 1] = mass[j + 1, 1];
+                        mass[j + 1, 1] = swap1;
+                        mass[j, 0] = mass[j + 1, 0];
+                        mass[j + 1, 0] = swap2;
+                    }
                 }
             }
-            for (int i = 0; i < lengthOfMass; i++) // вывод результата
+            for (int i = 0; i < lengthOfMass; i++) // сортировка массива
             {
-                for (int j = 1; j >= 0; j--)
-                {
-                    Console.Write(mass[i, j] + " ");
-                }
+                for (int j = 1; j >= 0; j --)
+                Console.Write(mass[i,j] + " ");
             }
         }
     }
